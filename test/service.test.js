@@ -1,5 +1,4 @@
 var serviceLocator = require('service-locator')()
-  , extend = require('lodash.assign')
   , assert = require('assert')
   , async = require('async')
   , createService = require('../init')().tierService.slice(-1)[0]
