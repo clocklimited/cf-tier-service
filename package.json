@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "init.js",
-    "scripts": {
+  "scripts": {
     "lint": "jshint .",
     "checkStyle": "jscs .",
     "pretest": "npm run-script lint && npm run-script checkStyle",
@@ -22,6 +22,12 @@
     "validity": "0.0.3"
   },
   "devDependencies": {
-    "mocha": "^2.2.1"
+    "assert-diff": "^1.0.1",
+    "async": "^0.9.0",
+    "mc-logger": "0.0.0",
+    "mocha": "^2.2.1",
+    "save": "^2.1.0",
+    "secure": "^0.1.3",
+    "service-locator": "^1.0.0"
   }
 }

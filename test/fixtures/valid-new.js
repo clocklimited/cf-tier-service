@@ -6,6 +6,7 @@ module.exports = function () {
     { name: 'Tier name'
     , description: 'This is the base tier'
     , resources: [ 'account' ]
+    , defaultActions: [ 'register' ]
     , account: '123'
     , createdDate: date
     })

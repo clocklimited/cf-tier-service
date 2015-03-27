@@ -26,6 +26,10 @@ module.exports = function () {
         { all: [ validity.required ]
         }
       }
+    , defaultActions:
+      { type: Array
+      , defaultValue: function () { return [] }
+      }
     , account:
       { type: String
       , validators: { all: [ validity.required ] }
