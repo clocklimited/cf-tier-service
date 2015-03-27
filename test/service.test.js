@@ -13,6 +13,8 @@ before(function (done) {
 
 describe('tier service', function () {
   describe('#getDefaultTiers()', function () {
+    var actionTiers = []
+
     function createTier(n, next) {
       var fixture = createFixture()
       if (n < 2) {
@@ -24,7 +26,11 @@ describe('tier service', function () {
       } else {
         fixture.defaultActions = [ 'test' ]
       }
-      serviceLocator.tierService.create(fixture, next)
+      serviceLocator.tierService.create(fixture, function (err, tier) {
+        if (err) return next(err)
+        if (tier.defaultActions.indexOf('action') > -1) actionTiers.push(tier._id)
+        return next()
+      })
     }
 
     before(function (done) {
@@ -36,9 +42,7 @@ describe('tier service', function () {
       serviceLocator.tierService.getDefaultTiers(action, function (err, tiers) {
         if (err) return done(err)
         assert.equal(tiers.length, 6)
-        tiers.forEach(function (tier) {
-          assert(tier.defaultActions.indexOf(action) > -1, 'Tier should have action')
-        })
+        assert.deepEqual(tiers, actionTiers)
         done()
       })
     })
