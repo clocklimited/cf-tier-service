@@ -8,7 +8,10 @@ module.exports = function (serviceLocator) {
     , service = crudService('Tier', save, schema, {})
 
   function getDefaultTiers(action, cb) {
-    service.find({ defaultActions: action }, { fields: [ '_id' ] }, function (err, tiers) {
+    // Always convert action to array
+    if (!Array.isArray(action)) action = [ action ]
+
+    service.find({ defaultActions: { $in: action } }, { fields: [ '_id' ] }, function (err, tiers) {
       if (err) return cb(err)
       return cb(null, tiers.map(function (t) { return t._id }))
     })
