@@ -1,5 +1,7 @@
 # cf-tier-service
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/clocklimited/cf-tier-service.svg)](https://greenkeeper.io/)
+
 The underlying tiering service used in Kado.
 
 ## Installation
